@@ -8,6 +8,37 @@
  * Copyright (c) 2020 Daniel Eden
  */
 
+@-webkit-keyframes dodon {
+  from {
+    -webkit-transform: scale3d(5, 5, 5);
+    transform: scale3d(5, 5, 5);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes dodon {
+  from {
+    -webkit-transform: scale3d(5, 5, 5);
+    transform: scale3d(5, 5, 5);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.dodon {
+  -webkit-animation-name: dodon;
+  animation-name: dodon;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+}
+
 @-webkit-keyframes bounce {
   from,
   20%,

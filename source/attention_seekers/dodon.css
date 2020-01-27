@@ -1,0 +1,14 @@
+@keyframes dodon {
+  from {
+    transform: scale3d(5, 5, 5);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+.dodon {
+  animation-name: dodon;
+  transform-origin: center bottom;
+  animation-duration: 0.3s;
+}
