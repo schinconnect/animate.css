@@ -5,8 +5,10 @@ var fs = require('fs');
 
 // Gulp
 var gulp = require('gulp');
-
+const {series, parallel, src, dest, lastRun, watch} = require('gulp');
 // Gulp plugins
+const plumber = require('gulp-plumber');
+const browserSync = require('browser-sync').create();
 var concat = require('gulp-concat');
 var gutil = require('gulp-util');
 var header = require('gulp-header');
@@ -24,7 +26,6 @@ var opts = {
   concatName: 'animate.css',
 
   autoprefixer: {
-    browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'],
     cascade: false,
   },
 
@@ -66,7 +67,39 @@ gulp.task('addHeader', function() {
     .pipe(gulp.dest(opts.destPath));
 });
 
-gulp.task('default', gulp.series('createCSS', 'addHeader'));
+function imageCopy() {
+  return src('./images/*', {
+    since: lastRun(imageCopy),
+  });
+}
+
+const browserSyncOption = {
+  port: 3000,
+  open: true,
+  ghostMode: false,
+  server: {
+    baseDir: './',
+    index: 'index.html',
+  },
+  reloadOnRestart: true,
+};
+
+function browsersync(done) {
+  browserSync.init(browserSyncOption);
+  done();
+}
+
+function watchFnc(done) {
+  const browserReload = () => {
+    browserSync.reload();
+    done();
+  };
+  watch('./index.html').on('change', series(browserReload));
+  watch('./source/**/*.css').on('change', series('createCSS', 'addHeader', browserReload));
+  watch('./images/**/*.{jpg,png,gif,svg}').on('change', series(imageCopy, browserReload));
+}
+
+gulp.task('default', gulp.series('createCSS', 'addHeader', parallel(browsersync, watchFnc)));
 
 // ----------------------------
 // Helpers/functions
