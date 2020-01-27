@@ -1,6 +1,8 @@
 {
   "custom": {
-    "dodon": true
+    "dodon": true,
+    "puru": true,
+    "rubber": true
   },
   "attention_seekers": {
     "bounce": true,
