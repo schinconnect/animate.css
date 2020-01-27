@@ -2,7 +2,8 @@
   "custom": {
     "dodon": true,
     "puru": true,
-    "rubber": true
+    "rubber": true,
+    "flash3": true
   },
   "attention_seekers": {
     "bounce": true,

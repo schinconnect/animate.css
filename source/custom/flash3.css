@@ -1,0 +1,18 @@
+@keyframes flash3 {
+  from,
+  33.33333%,
+  66.66667%,
+  to {
+    opacity: 1;
+  }
+
+  16.66667%,
+  50%,
+  83.33333% {
+    opacity: 0;
+  }
+}
+
+.flash3 {
+  animation-name: flash3;
+}
