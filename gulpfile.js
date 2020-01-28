@@ -95,6 +95,7 @@ function watchFnc(done) {
     done();
   };
   watch('./index.html').on('change', series(browserReload));
+  watch('./animate-config.json').on('change', series('createCSS', 'addHeader', browserReload));
   watch('./source/**/*.css').on('change', series('createCSS', 'addHeader', browserReload));
   watch('./images/**/*.{jpg,png,gif,svg}').on('change', series(imageCopy, browserReload));
 }
