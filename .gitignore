@@ -8,3 +8,5 @@ node_modules/
 test/
 npm-shrinkwrap.json
 package-lock.json
+animate.css
+animate.min.css
