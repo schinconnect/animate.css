@@ -32,17 +32,6 @@ var opts = {
   minRename: {
     suffix: '.min',
   },
-
-  banner: [
-    '@charset "UTF-8";\n',
-    '/*!',
-    ' * <%= name %> -<%= homepage %>',
-    ' * Version - <%= version %>',
-    ' * Licensed under the MIT license - https://opensource.org/licenses/MIT',
-    ' *',
-    ' * Copyright (c) <%= new Date().getFullYear() %> <%= author.name %>',
-    ' */\n\n',
-  ].join('\n'),
 };
 
 // ----------------------------
@@ -66,12 +55,6 @@ gulp.task('addHeader', function() {
     .pipe(header(opts.banner, pkg))
     .pipe(gulp.dest(opts.destPath));
 });
-
-function imageCopy() {
-  return src('./images/*', {
-    since: lastRun(imageCopy),
-  });
-}
 
 const browserSyncOption = {
   port: 3000,
@@ -97,7 +80,7 @@ function watchFnc(done) {
   watch('./index.html').on('change', series(browserReload));
   watch('./animate-config.json').on('change', series('createCSS', 'addHeader', browserReload));
   watch('./source/**/*.css').on('change', series('createCSS', 'addHeader', browserReload));
-  watch('./images/**/*.{jpg,png,gif,svg}').on('change', series(imageCopy, browserReload));
+  watch('./images/**/*.{jpg,png,gif,svg}').on('change', series(browserReload));
 }
 
 gulp.task('default', gulp.series('createCSS', 'addHeader', parallel(browsersync, watchFnc)));
