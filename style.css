@@ -8,20 +8,6 @@
  * Copyright (c) 2020 Daniel Eden
  */
 
-@charset "UTF-8";
-
-/*!
- * animate.css -https://daneden.github.io/animate.css/
- * Version - 3.7.2
- * Licensed under the MIT license - https://opensource.org/licenses/MIT
- *
- * Copyright (c) 2020 Daniel Eden
- */
-
-/*-----------------------------------*\
-  $RESET
-\*-----------------------------------*/
-
 body {
   overflow-x: hidden;
 }
@@ -287,4 +273,31 @@ html {
 
 .site__header {
   display: flex;
+}
+
+.combo-box {
+  position: relative;
+  width: 5.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.text-area {
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  bottom: 4px;
+  width: 87%;
+  border-radius: 10px;
+  padding: 20%;
+}
+
+.select-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input--duration {
+  width: 20%;
+  border: none;
 }

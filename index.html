@@ -16,14 +16,29 @@
 <body>
 <header class="site__header island">
   <div class="wrap">
-   <span id="animationSandbox" style="display: block;"><h1 class="site__title mega">Animate.css</h1></span>
+   <span id="animationSandbox" class="animated-duration" style="display: block;"><h1 class="site__title mega">Animate.css</h1></span>
     <span class="beta subhead">Just-add-water CSS animations</span>
   </div>
 </header><!-- /.site__header -->
-
 <main class="site__content island" role="content">
   <div class="wrap">
-    <form>
+    <form class="select-form">
+      <div class="combo-box">
+        <input name="textfield" type="text" class="text-area js--duration">
+        <select class="input input--dropdown input--duration js--duration-select">
+          <optgroup label="duration">
+            <option value="1s">1s</option>
+            <option value=".7s">0.7s</option>
+            <option value=".5s">0.5s</option>
+            <option value=".3s">0.3s</option>
+            <option value="2s">2s</option>
+            <option value="3s">3s</option>
+            <option value="5s">5s</option>
+            <option value="7s">7s</option>
+            <option value="10s">10s</option>
+          </optgroup>
+        </select>
+      </div>
       <select class="input input--dropdown js--animations">
 
         <optgroup label="custom">
@@ -195,11 +210,18 @@
       e.preventDefault();
       var anim = $('.js--animations').val();
       testAnim(anim);
+      var duration = $('.js--duration').val();
+      $('#animationSandbox').css('animation-duration', duration);
     });
 
     $('.js--animations').change(function(){
       var anim = $(this).val();
       testAnim(anim);
+    });
+    $('.js--duration-select').change(function(){
+      $('.js--duration').val($(this).val());
+      var duration = $('.js--duration').val();
+      $('#animationSandbox').css('animation-duration', duration);
     });
   });
 

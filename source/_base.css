@@ -1,6 +1,9 @@
 .animated {
-  animation-duration: 1s;
   animation-fill-mode: both;
+}
+
+#animationSandbox {
+  animation-duration: 1s;
 }
 
 .animated.infinite {
@@ -47,6 +50,6 @@
   .animated {
     animation-duration: 1ms !important;
     transition-duration: 1ms !important;
-    animation-iteration-count: 1 !important; 
+    animation-iteration-count: 1 !important;
   }
 }
