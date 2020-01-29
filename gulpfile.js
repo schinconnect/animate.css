@@ -84,7 +84,34 @@ function watchFnc(done) {
   watch('./images/**/*.{jpg,png,gif,svg}').on('change', series(browserReload));
 }
 
+gulp.task('release-copy-animate', function() {
+  return gulp.src('./animate.min.css').pipe(gulp.dest('./public'));
+});
+
+gulp.task('release-copy-html', function() {
+  return gulp.src('./index.html').pipe(gulp.dest('./public'));
+});
+
+gulp.task('release-copy-style', function() {
+  return gulp.src('./style.css').pipe(gulp.dest('./public'));
+});
+
+gulp.task('release-copy-images', function() {
+  return gulp.src('./images/*').pipe(gulp.dest('./public/images'));
+});
+
+gulp.task(
+  'release-copy',
+  gulp.parallel(
+    'release-copy-animate',
+    'release-copy-html',
+    'release-copy-style',
+    'release-copy-images',
+  ),
+);
+
 gulp.task('default', gulp.series('createCSS', 'addHeader', parallel(browsersync, watchFnc)));
+gulp.task('release', gulp.series('createCSS', 'addHeader', 'release-copy'));
 
 // ----------------------------
 // Helpers/functions
