@@ -1,0 +1,16 @@
+@keyframes rubber3 {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+.rubber3 {
+  animation-name: rubber3;
+  transform-origin: center bottom;
+  animation-duration: 0.3s;
+}

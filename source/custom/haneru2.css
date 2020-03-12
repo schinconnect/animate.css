@@ -1,0 +1,20 @@
+@keyframes haneru2 {
+  0% {
+    transform: translate3d(0, -30%, 0);
+  }
+  33% {
+    transform: translate3d(0%, 0, 0);
+  }
+  66% {
+    transform: translate3d(0%, -5%, 0);
+  }
+  99% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.haneru2 {
+  animation-name: haneru2;
+  transform-origin: center bottom;
+  animation-duration: 0.3s;
+}
