@@ -1,0 +1,18 @@
+@keyframes shiny {
+  0% {
+    left: -20%;
+  }
+
+  20% {
+    left: 140%;
+  }
+
+  100% {
+    left: 140%;
+  }
+}
+.shiny {
+  animation-name: shiny;
+  transform-origin: center bottom;
+  animation-duration: 0.3s;
+}
