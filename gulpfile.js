@@ -111,7 +111,7 @@ gulp.task(
 );
 
 gulp.task('default', gulp.series('createCSS', 'addHeader', parallel(browsersync, watchFnc)));
-gulp.task('release', gulp.series('createCSS', 'addHeader', 'release-copy'));
+gulp.task('build', gulp.series('createCSS', 'addHeader', 'release-copy'));
 
 // ----------------------------
 // Helpers/functions
