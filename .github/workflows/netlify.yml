@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: yarn
       - run: yarn gulp build
-
+      - run: npm install
       - run: npm netlify-cli deploy --dir=./public
         env:
           NETLIFY_AUTH_TOKEN: 'd732f8a2e2354edfd844c0e681d6fbb22b6a85606626b58f481d98cd1c5a6c57'
