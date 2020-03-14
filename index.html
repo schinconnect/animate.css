@@ -28,9 +28,9 @@
         <select class="input input--dropdown input--duration js--duration-select">
           <optgroup label="duration">
             <option value="1s">1s</option>
-            <option value=".7s">0.7s</option>
-            <option value=".5s">0.5s</option>
-            <option value=".3s">0.3s</option>
+            <option value="0.7s">0.7s</option>
+            <option value="0.5s">0.5s</option>
+            <option value="0.3s">0.3s</option>
             <option value="2s">2s</option>
             <option value="3s">3s</option>
             <option value="5s">5s</option>
@@ -211,12 +211,44 @@
   };
 
   $(document).ready(function(){
+
     $('.js--triggerAnimation').click(function(e){
       e.preventDefault();
       var anim = $('.js--animations').val();
       testAnim(anim);
       var duration = $('.js--duration').val();
       $('#animationSandbox').css('animation-duration', duration);
+    });
+
+    $('.js--duration').on('focus', function() {
+      var currentVal = $('.js--duration').val().replace('s', '');
+      $(window).keydown(function(e){
+
+        currentVal = Number(currentVal);
+
+        switch(e.which) {
+          case 38:
+          currentVal += 0.1;
+          break;
+          case 40:
+          currentVal -= 0.1;
+          break;
+          case 13:
+          var anim = $('.js--animations').val();
+          testAnim(anim);
+          var duration = $('.js--duration').val();
+          $('#animationSandbox').css('animation-duration', duration);
+          default:
+          return false;
+        }
+
+        if(currentVal < 0) {
+          return false;
+        }
+        currentVal = Math.round(currentVal * 10) / 10;
+        console.log(currentVal);
+        $('.js--duration').val(currentVal + 's');
+      });
     });
 
     $('.js--animations').change(function(){
