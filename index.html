@@ -223,9 +223,7 @@
     $('.js--duration').on('focus', function() {
       var currentVal = $('.js--duration').val().replace('s', '');
       $(window).keydown(function(e){
-
         currentVal = Number(currentVal);
-
         switch(e.which) {
           case 38:
           currentVal += 0.1;
