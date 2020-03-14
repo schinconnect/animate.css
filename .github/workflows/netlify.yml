@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 12.x
       - run: npm install gulp
-      - run: npm gulp build
+      - run: npx gulp release
 
       - run: npx netlify-cli deploy --dir=./public
         env:
