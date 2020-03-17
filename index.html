@@ -224,12 +224,21 @@
       var currentVal = $('.js--duration').val().replace('s', '');
       $(window).keydown(function(e){
         currentVal = Number(currentVal);
+        console.log(e.shiftKey);
         switch(e.which) {
           case 38:
+          if(e.shiftKey) {
+          currentVal += 0.01;
+          }else {
           currentVal += 0.1;
+          }
           break;
           case 40:
+          if(e.shiftKey) {
+          currentVal -= 0.01;
+          }else {
           currentVal -= 0.1;
+          }
           break;
           case 13:
           var anim = $('.js--animations').val();
@@ -243,7 +252,7 @@
         if(currentVal < 0) {
           return false;
         }
-        currentVal = Math.round(currentVal * 10) / 10;
+        currentVal = Math.round(currentVal * 100) / 100;
         console.log(currentVal);
         $('.js--duration').val(currentVal + 's');
       });
